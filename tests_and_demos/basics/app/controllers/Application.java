@@ -2,6 +2,7 @@ package controllers;
 
 import play.mvc.*;
 
+@With( Facebook.class )
 public class Application extends Controller {
 
     public static void index() {

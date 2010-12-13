@@ -17,14 +17,17 @@ public class FacebookSession {
     Type dictionaryType = new TypeToken<HashMap<String, String>>() {}.getType();
     Gson gson = new Gson();
 
+
     if( pieces.length != 2 ){
       throw new UnexpectedException( "signedRequest doesn't split into the correct number of chunks" );
     }
 
+
+
     sessionData_ = gson.fromJson( decodeBase64URL( pieces[1] ), dictionaryType );
   }
 
-  private String decodeBase64URL( String rawInput ){
+  public static String decodeBase64URL( String rawInput ){
     String processedInput = rawInput.replace( '-', '+' ).replace( '_', '+' );
     Base64 base64Decoder = new Base64();
 

@@ -9,6 +9,8 @@ public class FacebookPlugin extends PlayPlugin {
   private static ThreadLocal<FacebookSettings> settings_;
   public static final String SESSION_PARAMETER = "signed_request";
   public static final String SESSION_KEY = "facebook_session";
+  public static final String JAVA_CRYPTO_TYPE = "SHA-256";
+  public static final String FACEBOOK_CRYPTO_TYPE = "HMAC-SHA256";
 
   // This doesn't work. Unfortunately the request is available here, but not inside the params element for some reason.
   /* @Override
@@ -48,5 +50,9 @@ public class FacebookPlugin extends PlayPlugin {
     FacebookSession session = new FacebookSession();
     session.initRequest( signedRequest, settings_.get().getSecret() );
     return session;
+  }
+
+  public static FacebookSettings getSettings(){
+    return settings_.get();
   }
 }
